@@ -3,7 +3,7 @@
     <router-link tag="div" class="tab-item" to="/">
       <span>我的</span>
     </router-link>
-    <router-link tag="div" class="tab-item" to="/tab">
+    <router-link tag="div" class="tab-item" to="/musicHall">
       <span>音乐馆</span>
     </router-link>
     <router-link tag="div" class="tab-item" to="/">
@@ -28,6 +28,7 @@ export default {
   background: @skin-green;
   justify-content: center;
   display: flex;
+  font-size: 18px;
   .tab-item {
     width: 50px;
     text-align: center;

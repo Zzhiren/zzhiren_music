@@ -25,15 +25,27 @@ module.exports = {
       'common': resolve('src/common'),
       'components': resolve('src/components'),
       'base': resolve('src/base'),
-      'api': resolve('src/api')
+      'api': resolve('src/api'),
+      'data': resolve('src/data')
     }
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: vueLoaderConfig
+        use: [
+          {
+            loader: 'vue-loader',
+            options: vueLoaderConfig
+          },
+          {
+            loader: 'iview-loader',
+            options: {
+              prefix: false
+            }
+          }
+        ]
+
       },
       {
         test: /\.js$/,
@@ -67,7 +79,8 @@ module.exports = {
       {
         test: /\.less$/,
         loader: "style-loader!css-loader!less-loader",
-      },
+      }
+
     ]
   }
 }

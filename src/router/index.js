@@ -4,19 +4,19 @@ import Hello from '@/components/Hello'
 
 Vue.use(Router)
 
-const tab = (resolve) => {
-  import('components/tab/tab').then((module) => {
+const musicHall = (resolve) => {
+  import('components/music-hall/music-hall').then((module) => {
     resolve(module)
   })
 }
 
 export default new Router({
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'tab',
-    //   component: tab
-    // },
+    {
+      path: '/musicHall',
+      name: 'musicHall',
+      component: musicHall
+    },
     // {
     //   path: '/tab',
     //   name: 'tab',
