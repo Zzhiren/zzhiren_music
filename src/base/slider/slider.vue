@@ -59,7 +59,6 @@ export default {
     methods: {
         _setSliderWidth() {
             this.children = this.$refs.sliderGroup.children //获取slidergroup的子元素
-            console.log(this.children.length)
             let width = 0
             let sliderWidth = this.$refs.slider.clientWidth //slider的宽度
             for (let i = 0; i < this.children.length; i++) {
