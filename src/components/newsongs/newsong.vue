@@ -1,28 +1,22 @@
 <template>
-    <div class="song-sheet">
+    <div class="new-song">
         <div class="title">
-            <span>歌单推荐</span>
+            <span>新歌速递</span>
             <div class="icon">
                 <Icon type="ios-arrow-right" class="ios-arrow-right"></Icon>
             </div>
         </div>
         <div class="list">
-            <div v-for="(item, index) in list.slice(0, 3)" v-bind:key="item.dissid">
-                <img v-bind:src="item.imgurl" alt="">
-                <span class="dissname" v-html="item.dissname">{{ item.dissname }}</span>
-            </div>
-        </div>
-        <div class="list">
-            <div v-for="(item, index) in list.slice(3)" v-bind:key="item.dissid">
-                <img v-bind:src="item.imgurl" alt="">
-                <span class="dissname" v-html="item.dissname">{{ item.dissname }}</span>
+            <div v-for="(item, index) in list.slice(0, 3)" v-bind:key="item.songid">
+                <img v-bind:src="'//y.gtimg.cn/music/photo_new/T002R90x90M000' + item.data.albummid + '.jpg?' + '259200'" alt="">
+                
+                <span class="dissname">{{ item.data.songname }}</span>
             </div>
         </div>
     </div>
-
 </template>
 <script>
-    import { getSongSheet } from 'api/music_hall_data'
+    import { getNewSongs } from 'api/music_hall_data'
 
     export default {
         data() {
@@ -31,13 +25,12 @@
             }
         },
         mounted() {
-            this._getSongSheet()
+            this._getNewSongs()
         },
         methods: {
-            _getSongSheet() {
-                getSongSheet().then((response) => {
-                    this.list = response.data.hotdiss.list.slice(0, 6)
-                    // console.log(response)
+            _getNewSongs() {
+                getNewSongs().then((response) => {
+                    this.list = response.songlist.slice(0, 3)
                 })
             }
         }
@@ -46,7 +39,7 @@
 <style lang="less" scoped>
     @import '~common/less/skin';
 
-    .song-sheet {
+    .new-song {
         max-width: @max-width;
         min-width: @min-width;
         width: 100%;
@@ -92,8 +85,8 @@
                 margin-right: 2px;
             }
             .dissname {
-                font-size: 10px;
-                text-align: left;
+                font-size: 12px;
+                text-align: center;
                 display: block;
                 margin-right: 2px;
                 margin-left: 2px;

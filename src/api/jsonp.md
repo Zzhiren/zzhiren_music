@@ -1,35 +1,92 @@
-// https://c.y.qq.com/v8/fcg-bin/fcg_first_yqq.fcg?
-// format=jsonp&
-// tpl=v12&
-// page=other&
-// callback=GetRecomListCallback309021907866293&
-// rnd=309021907866293&
-// g_tk=5381&
-// jsonpCallback=GetRecomListCallback309021907866293&
-// loginUin=0&
-// hostUin=0&
-// format=jsonp&
-// inCharset=utf8&
-// outCharset=GB2312&
-// notice=0&
-// platform=yqq&
-// needNewCode=0
+https://c.y.qq.com/v8/fcg-bin/fcg_first_yqq.fcg?
+format=jsonp&
+tpl=v12&
+page=other&
+callback=GetRecomListCallback309021907866293&
+rnd=309021907866293&
+g_tk=5381&
+jsonpCallback=GetRecomListCallback309021907866293&
+loginUin=0&
+hostUin=0&
+format=jsonp&
+inCharset=utf8&
+outCharset=GB2312&
+notice=0&
+platform=yqq&
+needNewCode=0
 
-// https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg?
-// tpl=3&
-// page=detail&
-// date=2017_37&
-// topid=26&
-// type=top&
-// song_begin=0&
-// song_num=30&
-// g_tk=1089191725&
-// jsonpCallback=MusicJsonCallbacktoplist&
-// loginUin=0&
-// hostUin=0&
-// format=jsonp&
-// inCharset=utf8&
-// outCharset=utf-8&
-// notice=0&
-// platform=yqq&
-// needNewCode=0
+https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg?
+tpl=3&
+page=detail&
+date=2017_37&
+topid=26&
+type=top&
+song_begin=0&
+song_num=30&
+g_tk=1089191725&
+jsonpCallback=MusicJsonCallbacktoplist&
+loginUin=0&
+hostUin=0&
+format=jsonp&
+inCharset=utf8&
+outCharset=utf-8&
+notice=0&
+platform=yqq&
+needNewCode=0
+
+* 每日推荐30首
+https://c.y.qq.com/v8/fcg-bin/fcg_first_yqq.fcg?
+format=jsonp&
+tpl=v12&
+page=other&
+callback=GetRecomListCallback9311333933901744&
+rnd=9311333933901744&
+g_tk=5381&
+jsonpCallback=GetRecomListCallback9311333933901744&loginUin=0&
+hostUin=0&
+format=jsonp&
+inCharset=utf8&
+outCharset=GB2312&notice=0&
+platform=yqq&
+needNewCode=0
+
+* 新歌速递
+https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg?
+tpl=3&
+page=detail&
+date=2017-09-18&
+topid=27&
+type=top&
+song_begin=0&
+song_num=30&
+g_tk=5381&
+jsonpCallback=MusicJsonCallbacktoplist&loginUin=0&
+hostUin=0&
+format=jsonp&
+inCharset=utf8&
+outCharset=utf-8&
+notice=0&
+platform=yqq&
+needNewCode=0
+
+* MV
+https://c.y.qq.com/v8/fcg-bin/getmv_by_tag?
+g_tk=5381&
+jsonpCallback=getMvlist&loginUin=0&
+hostUin=0&
+format=jsonp&
+inCharset=utf8&
+outCharset=utf-8&
+notice=0&
+platform=yqq&
+needNewCode=0&
+utf8=1&
+type=2&
+year=0&
+area=0&
+tag=0&
+pageno=0&
+pagecount=20&
+otype=json&
+taglist=1&
+_=0.4342359392967663
