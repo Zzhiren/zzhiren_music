@@ -4,23 +4,53 @@ import Hello from '@/components/Hello'
 
 Vue.use(Router)
 
-const musicHall = (resolve) => {
+const musichall = (resolve) => {
   import('components/music-hall/music-hall').then((module) => {
     resolve(module)
   })
 }
 
+const tab = (resolve) => {
+  import('components/tab/tab').then((module) => {
+    resolve(module)
+  })
+}
+const main = (resolve) => {
+  import('base/main/main').then((module) => {
+    resolve(module)
+  })
+}
+
+
 export default new Router({
   routes: [
     {
-      path: '/musicHall',
-      name: 'musicHall',
-      component: musicHall
+      path: '/',
+      redirect: '/tab'
     },
+    {
+      path: '/tab',
+      name: 'tab',
+      component: tab,
+      children: [
+        {
+          path: 'musichall',
+          name: 'musichall',
+          component: musichall
+        }
+      ]
+    }
     // {
-    //   path: '/tab',
-    //   name: 'tab',
-    //   component: tab
+    //   path: '/',
+    //   name: 'main',
+    //   component: main,
+    //   children: [
+    //     {
+    //       path: 'musichall',
+    //       name: 'musichall',
+    //       component: musichall
+    //     }
+    //   ]
     // }
   ]
 })

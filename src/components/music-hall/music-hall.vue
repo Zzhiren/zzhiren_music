@@ -51,5 +51,10 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-
+.space {
+  width: 100%;
+  height: 44px;
+  background: green;
+  z-index: 9999;
+}
 </style>

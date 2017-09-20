@@ -1,39 +1,57 @@
 <template>
-  <div id="tab">
-    <router-link tag="div" class="tab-item" to="/">
-      <span>我的</span>
-    </router-link>
-    <router-link tag="div" class="tab-item" to="/musicHall">
-      <span>音乐馆</span>
-    </router-link>
-    <router-link tag="div" class="tab-item" to="/">
-      <span>发现</span>
-    </router-link>
-
+  <div class="tab">
+    
+    <div class="space">
+      <div class="tab-list">
+      <router-link tag="div" class="tab-item" to="/">
+        <span>我的</span>
+      </router-link>
+      <router-link tag="div" class="tab-item" to="/tab/musichall">
+        <span>音乐馆</span>
+      </router-link>
+      <router-link tag="div" class="tab-item" to="/">
+        <span>发现</span>
+      </router-link>
+    </div>
+    </div>
+    <list-view>
+      <router-view></router-view>
+    </list-view>
   </div>
 </template>
 <script>
-export default {
+  import ListView from 'base/listview/listview'
 
-}
+  export default {
+    components: {
+      ListView
+    }
+  }
 </script>
 <style lang="less" scoped>
-@import '~common/less/skin';
-@height: 44px;
-#tab {
-  max-width: @max-width;
-  min-width: @min-width;
-  width: 100%;
-  height: @height;
-  background: @skin-green;
-  justify-content: center;
-  display: flex;
-  font-size: 18px;
-  .tab-item {
-    width: 50px;
-    text-align: center;
-    line-height: @height;
-    color: white;
-  }
-}
+  @import '~common/less/skin';
+  @height: 44px;
+
+    .tab-list {
+      max-width: @max-width;
+      min-width: @min-width;
+      width: 100%;
+      height: @height;
+      background: @skin-green;
+      justify-content: center;
+      display: flex;
+      font-size: 18px;
+      top: 0;
+      position: fixed;
+      .tab-item {
+        width: 60px;
+        text-align: center;
+        line-height: @height;
+        color: white;
+      }
+    }
+    .space {
+      width: 100%;
+      height: @height;
+    }
 </style>
