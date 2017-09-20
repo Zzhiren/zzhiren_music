@@ -28,6 +28,11 @@ export default new Router({
       path: '/',
       redirect: '/tab'
     },
+    // {
+    //   path: '/musichall',
+    //   name: 'musichall',
+    //   component: musichall
+    // },
     {
       path: '/tab',
       name: 'tab',

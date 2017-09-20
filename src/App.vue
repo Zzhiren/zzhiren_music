@@ -1,11 +1,9 @@
 <template>
   <div id="app">
-    <div class="content">
+    <!-- <tab></tab> -->
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
-    </div>
-
     <div class="play-music">
     </div>
   </div>

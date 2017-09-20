@@ -1,6 +1,5 @@
 <template>
   <div class="tab">
-    
     <div class="space">
       <div class="tab-list">
       <router-link tag="div" class="tab-item" to="/">
@@ -13,10 +12,8 @@
         <span>发现</span>
       </router-link>
     </div>
+    <router-view></router-view>
     </div>
-    <list-view>
-      <router-view></router-view>
-    </list-view>
   </div>
 </template>
 <script>
@@ -42,7 +39,7 @@
       display: flex;
       font-size: 18px;
       top: 0;
-      position: fixed;
+      // position: fixed;
       .tab-item {
         width: 60px;
         text-align: center;
