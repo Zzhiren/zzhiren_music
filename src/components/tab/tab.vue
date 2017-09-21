@@ -28,8 +28,10 @@
 <style lang="less" scoped>
   @import '~common/less/skin';
   @height: 44px;
-
-    .tab-list {
+.tab {
+  position: relative;
+  height: @height;
+  .tab-list {
       max-width: @max-width;
       min-width: @min-width;
       width: 100%;
@@ -47,8 +49,10 @@
         color: white;
       }
     }
-    .space {
-      width: 100%;
-      height: @height;
-    }
+}
+    
+    // .space {
+    //   width: 100%;
+    //   height: @height;
+    // }
 </style>

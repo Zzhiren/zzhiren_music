@@ -4,7 +4,7 @@ import Hello from '@/components/Hello'
 
 Vue.use(Router)
 
-const musichall = (resolve) => {
+const musichallx = (resolve) => {
   import('components/music-hall/music-hall').then((module) => {
     resolve(module)
   })
@@ -41,7 +41,7 @@ export default new Router({
         {
           path: 'musichall',
           name: 'musichall',
-          component: musichall
+          component: musichallx
         }
       ]
     }

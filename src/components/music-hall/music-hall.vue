@@ -1,17 +1,15 @@
 <template>
   <div id="musci-hall">
-    <scroll ref="scroll" :data="data">
-      <!-- <Scroll :data="toplist"> -->
+    <scroll ref="scroll" class="scroll" :recommends='recommends' :songsheet='songsheet' :toplist='toplist'>
       <div>
-        <Search></Search>
-        <recommend></recommend>
-        <song-sheet></song-sheet>
-        <top-list></top-list>
-        <new-song></new-song>
-        <mv-recommend></mv-recommend>
+        <!-- <Search></Search> -->
+        <recommend :recommends='recommends'></recommend>
+        <song-sheet :songsheet='songsheet'></song-sheet>
+        <top-list :toplist='toplist'></top-list>
+        <!-- <new-song></new-song>
+          <mv-recommend></mv-recommend> -->
       </div>
 
-      <!-- </Scroll> -->
     </scroll>
   </div>
 </template>
@@ -24,30 +22,41 @@ import NewSong from 'components/newsongs/newsong'
 import MvRecommend from 'components/mv/mv-recommend'
 import Scroll from 'base/scroll/scroll'
 
-import { getDataList } from 'api/music_hall_data'
+import { getDataList, getSongSheet, getTopList } from 'api/music_hall_data'
+import { getRecommend } from 'data/getdata'
 
 export default {
   data() {
     return {
-      focus: [],
-      hotdiss: {},
-      shoubomv: {},
-      toplist: [],
-      data: {}
+      recommends: [],
+      songsheet: [],
+      toplist: []
     }
   },
   mounted() {
-    this._getDataList()
+    this._getRecommends()
+    this._getSongSheet()
+    setTimeout(() => {
+      this._getTopList()
+    }, 5000)
   },
   methods: {
-    _getDataList() {
-      getDataList().then((response) => {
-        this.focus = response.data.focus
-        this.hotdiss = response.data.hotdiss
-        this.shoubomv = response.data.shoubomv
-        this.toplist = response.data.toplist
-        this.data = response.data
-        console.log(response)
+    _getRecommends() {
+      getRecommend().then(response => {
+        this.recommends = response.data.data.slider
+      })
+    },
+
+    _getSongSheet() {
+      getSongSheet().then((response) => {
+        this.songsheet = response.data.hotdiss.list.slice(0, 6)
+        // console.log(response)
+      })
+    },
+
+    _getTopList() {
+      getTopList().then((response) => {
+        this.toplist = response.songlist
       })
     }
   },
@@ -66,11 +75,15 @@ export default {
 #musci-hall {
   position: fixed;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  // height: 100%;
+  // overflow: hidden;
   top: 40px;
+  bottom: 0;
 }
-
+.scroll {
+  height: 100%;
+      overflow: hidden;
+}
 .space {
   width: 100%;
   height: 44px;

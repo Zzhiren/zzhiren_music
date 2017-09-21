@@ -72,17 +72,23 @@ import { getRecommend } from 'data/getdata'
 import {mapMutations} from 'vuex'
 
 export default {
+    props: {
+        recommends: {
+            type: Array,
+            default: []
+        }
+    },
     data() {
         return {
-            recommends: [],
-            xxx: [1,23]
+            // recommends: [],
+            xxx: [1,'asds']
         }
     },
     components: {
         slider
     },
     created() {
-        this._getRecommends()
+        // this._getRecommends()
     },
     methods: {
         _getRecommends() {
@@ -90,7 +96,7 @@ export default {
                 this.recommends = response.data.data.slider
             })
             // this.setMusic_hall_refresh(recommends)
-            console.log(this.xxx)
+            // console.log(this.xxx)
             this.set(this.xxx)
         
         },

@@ -4,8 +4,8 @@
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
-    <div class="play-music">
-    </div>
+    <!-- <div class="play-music">
+    </div> -->
   </div>
 </template>
 
