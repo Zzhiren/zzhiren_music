@@ -69,11 +69,13 @@
 <script>
 import slider from 'base/slider/slider'
 import { getRecommend } from 'data/getdata'
+import {mapMutations} from 'vuex'
 
 export default {
     data() {
         return {
-            recommends: []
+            recommends: [],
+            xxx: [1,23]
         }
     },
     components: {
@@ -87,7 +89,14 @@ export default {
             getRecommend().then(response => {
                 this.recommends = response.data.data.slider
             })
-        }
+            // this.setMusic_hall_refresh(recommends)
+            console.log(this.xxx)
+            this.set(this.xxx)
+        
+        },
+        ...mapMutations({
+        set: 'SET'
+      })
     }
 }
 

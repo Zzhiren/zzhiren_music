@@ -1,5 +1,5 @@
 <template>
-    <div ref="wrapper">
+    <div ref="wrapper" class="xxx">
         <slot></slot>
     </div>
 </template>
@@ -21,7 +21,7 @@
         default: false
       },
       data: {
-        type: Array,
+        type: Object,
         default: null
       },
       pullup: {
@@ -59,13 +59,13 @@
           })
         }
 
-        if (this.pullup) {
-          this.scroll.on('scrollEnd', () => {
-            if (this.scroll.y <= (this.scroll.maxScrollY + 50)) {
-              this.$emit('scrollToEnd')
-            }
-          })
-        }
+        // if (this.pullup) {
+        //   this.scroll.on('scrollEnd', () => {
+        //     if (this.scroll.y <= (this.scroll.maxScrollY + 50)) {
+        //       this.$emit('scrollToEnd')
+        //     }
+        //   })
+        // }
 
         if (this.beforeScroll) {
           this.scroll.on('beforeScrollStart', () => {
@@ -99,4 +99,8 @@
   }
 </script>
 <style lang="less" scoped>
+.xxx {
+  width: 100%;
+  height: 667px;
+}
 </style>
