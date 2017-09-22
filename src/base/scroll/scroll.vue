@@ -37,17 +37,9 @@ export default {
       type: Number,
       default: 20
     },
-    recommends: {
-      type: Array,
-      default: []
-    },
-    songsheet: {
-      type: Array,
-      default: []
-    },
-    toplist: {
-      type: Array,
-      default: []
+    datas: {
+      type: Object,
+      default: {}
     }
   },
   mounted() {
@@ -55,6 +47,10 @@ export default {
       this._initScroll()
     }, 20)
 
+  },
+  updated() {
+    this.refresh()
+    console.log('updated')
   },
   computed: {
     ...mapGetters([
@@ -100,12 +96,10 @@ export default {
     },
     refresh() {
       this.scroll && this.scroll.refresh()
-        console.log('xxxxxxxxxx')
       
     },
     scrollTo() {
       this.scroll && this.scroll.scrollTo.apply(this.scroll, arguments)
-      console.log(this.xxx + '111111111')
     },
     scrollToElement() {
       this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments)
@@ -124,7 +118,7 @@ export default {
     //     console.log('b')
     //   }, this.refreshDelay)
     // },
-    toplist() {
+    datas() {
       setTimeout(() => {
         this.refresh()
         console.log('c')

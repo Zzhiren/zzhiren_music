@@ -1,10 +1,10 @@
 <template>
     <div class="recommend">
-        <div v-if="recommends.length" class="slider-wrapper">
+        <div class="slider-wrapper">
             <slider>
-                <div class="slider-item " v-for="(item, index) in recommends" v-bind:key="item.index">
-                    <a v-bind:href="item.linkUrl">
-                        <img v-bind:src="item.picUrl" alt="">
+                <div class="slider-item " v-for="(item, index) in datas.focus" v-bind:key="item.fid">
+                    <a v-bind:href="item.jumpurl">
+                        <img v-bind:src="item.pic" alt="">
                     </a>
                 </div>
             </slider>
@@ -73,22 +73,22 @@ import {mapMutations} from 'vuex'
 
 export default {
     props: {
-        recommends: {
-            type: Array,
-            default: []
+        datas: {
+            type: Object,
+            default: {}
         }
     },
     data() {
         return {
             // recommends: [],
-            xxx: [1,'asds']
+            // xxx: [1,'asds']
         }
     },
     components: {
         slider
     },
-    created() {
-        // this._getRecommends()
+    mounted() {
+        console.log(this.focus)
     },
     methods: {
         _getRecommends() {

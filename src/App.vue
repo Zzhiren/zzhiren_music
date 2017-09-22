@@ -1,11 +1,14 @@
 <template>
   <div id="app">
     <!-- <tab></tab> -->
+    <div class="content">
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
-    <!-- <div class="play-music">
-    </div> -->
+    </div>
+      
+    <div class="play-music">
+    </div>
   </div>
 </template>
 
@@ -43,6 +46,7 @@
       flex: 1;
       position: fixed;
       bottom: 0;
+      // position: relative;
     }
   }
 </style>

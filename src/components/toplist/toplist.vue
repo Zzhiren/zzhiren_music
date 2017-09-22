@@ -7,7 +7,7 @@
             </div>
         </div>
         <!-- <span v-for="(item,index) in toplist" v-bind:key="item.ListName">12312{{item.ListName}}</span> -->
-        <div class="list" v-for="(item, index) in toplist.slice(0, 5)" v-bind:key="item.cur_count">
+        <div class="list" v-for="(item, index) in datas.toplist.slice(0, 5)" v-bind:key="item.cur_count">
             <div class="albumm-pic">
                 <img v-bind:src="'//y.gtimg.cn/music/photo_new/T002R90x90M000' + item.data.albummid + '.jpg?' + '259200'" alt="">
             </div>
@@ -29,9 +29,9 @@
 
 export default {
     props: {
-        toplist: {
-            type: Array,
-            default: []
+        datas: {
+            type: Object,
+            default: {}
         }
     },
     data() {
@@ -41,7 +41,7 @@ export default {
     },
     mounted() {
         // this._getTopList()
-        console.log(this.toplist)
+        // console.log(this.toplist)
     },
     methods: {
         // _getTopList() {

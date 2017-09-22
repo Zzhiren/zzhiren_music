@@ -24,6 +24,7 @@ export default {
     height: @height;
     background: @skin-green;
     text-align: center;
+    position: relative;
     input {
         background-color: #2bab6d;
         border: 0;

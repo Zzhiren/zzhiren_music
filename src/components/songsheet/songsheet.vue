@@ -1,19 +1,19 @@
 <template>
-    <div class="song-sheet">
+    <div  class="song-sheet">
         <div class="title">
             <span>歌单推荐</span>
             <div class="icon">
                 <Icon type="ios-arrow-right" class="ios-arrow-right"></Icon>
             </div>
         </div>
-        <div class="list">
-            <div v-for="(item, index) in songsheet.slice(0, 3)" v-bind:key="item.dissid">
+        <div v-if="datas.hasOwnProperty('songsheet')" class="list">
+            <div v-for="(item, index) in datas.songsheet.slice(0, 3)" v-bind:key="item.dissid">
                 <img v-bind:src="item.imgurl" alt="">
                 <span class="dissname" v-html="item.dissname">{{ item.dissname }}</span>
             </div>
         </div>
         <div class="list">
-            <div v-for="(item, index) in songsheet.slice(3)" v-bind:key="item.dissid">
+            <div v-for="(item, index) in datas.songsheet.slice(3)" v-bind:key="item.dissid">
                 <img v-bind:src="item.imgurl" alt="">
                 <span class="dissname" v-html="item.dissname">{{ item.dissname }}</span>
             </div>
@@ -25,27 +25,24 @@ import { getSongSheet } from 'api/music_hall_data'
 
 export default {
     props: {
-        songsheet: {
-            type: Array,
-            default: []
+        datas: {
+            type: Object,
+            default: {}
         }
     },
     data() {
         return {
-            // list: []
         }
     },
     mounted() {
-        // this._getSongSheet()
-        console.log(this.songsheet)
+        // this._setSongSheet()
+        console.log('1111')
+        console.log(this.datas.hasOwnProperty('songsheet'))
     },
     methods: {
-        // _getSongSheet() {
-        //     getSongSheet().then((response) => {
-        //         this.list = response.data.hotdiss.list.slice(0, 6)
-        //         // console.log(response)
-        //     })
-        // }
+        _setSongSheet() {
+            // this.songsheet = this.datas.songsheet
+        }
     }
 }
 </script>

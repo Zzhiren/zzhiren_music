@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="list">
-            <div v-for="(item, index) in list.slice(0, 3)" v-bind:key="item.songid">
+            <div v-for="(item, index) in newsongs.slice(0, 3)" v-bind:key="item.songid">
                 <img v-bind:src="'//y.gtimg.cn/music/photo_new/T002R90x90M000' + item.data.albummid + '.jpg?' + '259200'" alt="">
                 
                 <span class="dissname">{{ item.data.songname }}</span>
@@ -19,20 +19,26 @@
     import { getNewSongs } from 'api/music_hall_data'
 
     export default {
+        props: {
+            newsongs: {
+                type: Array,
+                default: []
+            }
+        },
         data() {
             return {
-                list: []
+                // newsongs: []
             }
         },
         mounted() {
-            this._getNewSongs()
+            // this._getNewSongs()
         },
         methods: {
-            _getNewSongs() {
-                getNewSongs().then((response) => {
-                    this.list = response.songlist.slice(0, 3)
-                })
-            }
+            // _getNewSongs() {
+            //     getNewSongs().then((response) => {
+            //         this.list = response.songlist.slice(0, 3)
+            //     })
+            // }
         }
     }
 </script>

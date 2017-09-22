@@ -1,7 +1,7 @@
 <template>
   <div class="mv-recommend">
       <div class="title">
-            <span>歌单推荐</span>
+            <span>MV推荐</span>
             <div class="icon">
                 <Icon type="ios-arrow-right" class="ios-arrow-right"></Icon>
             </div>
@@ -26,17 +26,23 @@
 import { getMvList } from 'api/music_hall_data'
 
 export default {
+    props: {
+        mvlist: {
+            type: Array,
+            default: []
+        }
+    },
     data() {
         return {
-            mvlist: [],
-            area: [],
-            tag: [],
-            year: [],
-            name: ''
+            // mvlist: [],
+            // area: [],
+            // tag: [],
+            // year: [],
+            // name: ''
         }
     },
   mounted() {
-      this._getMvList()
+    //   this._getMvList()
   },
   computed: {
       
@@ -52,7 +58,6 @@ export default {
       },
       _singerName(singers){ 
           var array = []
-
           for(var i in singers) {
               array.push(singers[i].name)
           }
