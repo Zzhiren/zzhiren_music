@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="list">
-            <div v-for="(item, index) in newsongs.slice(0, 3)" v-bind:key="item.songid">
+            <div v-for="(item, index) in datas.newsongs.slice(0, 3)" v-bind:key="item.songid">
                 <img v-bind:src="'//y.gtimg.cn/music/photo_new/T002R90x90M000' + item.data.albummid + '.jpg?' + '259200'" alt="">
                 
                 <span class="dissname">{{ item.data.songname }}</span>
@@ -15,14 +15,15 @@
         </div>
     </div>
 </template>
-<script>
-    import { getNewSongs } from 'api/music_hall_data'
+<script scoped>
+    // import { getNewSongs } from 'api/music_hall_data'
+    import { mapMutations } from 'vuex'
 
     export default {
         props: {
-            newsongs: {
-                type: Array,
-                default: []
+            datas: {
+                type: Object,
+                default: {}
             }
         },
         data() {
@@ -30,15 +31,21 @@
                 // newsongs: []
             }
         },
+        computed: {
+           
+        },
         mounted() {
-            // this._getNewSongs()
+            this._scrollRefresh()
         },
         methods: {
-            // _getNewSongs() {
-            //     getNewSongs().then((response) => {
-            //         this.list = response.songlist.slice(0, 3)
-            //     })
-            // }
+           _scrollRefresh() {
+            if(this.datas.newsongs.length > 0) {
+                this.scrollRefresh('newsongs')
+            }
+        },
+         ...mapMutations({
+                scrollRefresh: 'SCROLL_REFRESH'
+            })
         }
     }
 </script>

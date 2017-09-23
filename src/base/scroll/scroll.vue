@@ -1,5 +1,5 @@
 <template>
-  <div ref="wrapper" class=".xxx">
+  <div ref="wrapper">
     <slot></slot>
   </div>
 </template>
@@ -21,10 +21,6 @@ export default {
       type: Boolean,
       default: false
     },
-    data: {
-      type: Object,
-      default: null
-    },
     pullup: {
       type: Boolean,
       default: false
@@ -42,20 +38,27 @@ export default {
       default: {}
     }
   },
+  data() {
+    return {
+      state: null
+    }
+  },
+  computed: {
+    // refresh_state() {
+    //   return this.state = this.refresh_state
+    // },
+    ...mapGetters([
+      'refresh_state'
+    ])
+  },
   mounted() {
     setTimeout(() => {
       this._initScroll()
     }, 20)
-
+console.log(this.refresh_state)
   },
   updated() {
     this.refresh()
-    console.log('updated')
-  },
-  computed: {
-    ...mapGetters([
-      'xxx'
-    ])
   },
   methods: {
     _initScroll() {
@@ -74,13 +77,13 @@ export default {
         })
       }
 
-      // if (this.pullup) {
-      //   this.scroll.on('scrollEnd', () => {
-      //     if (this.scroll.y <= (this.scroll.maxScrollY + 50)) {
-      //       this.$emit('scrollToEnd')
-      //     }
-      //   })
-      // }
+      if (this.pullup) {
+        this.scroll.on('scrollEnd', () => {
+          if (this.scroll.y <= (this.scroll.maxScrollY + 50)) {
+            this.$emit('scrollToEnd')
+          }
+        })
+      }
 
       if (this.beforeScroll) {
         this.scroll.on('beforeScrollStart', () => {
@@ -103,25 +106,14 @@ export default {
     },
     scrollToElement() {
       this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments)
-    },
-
+    }
+    
   },
   watch: {
-    // recommends() {
-    //   setTimeout(() => {
-    //     this.refresh()
-    //   }, this.refreshDelay)
-    // },
-    // songsheet() {
-    //   setTimeout(() => {
-    //     this.refresh()
-    //     console.log('b')
-    //   }, this.refreshDelay)
-    // },
-    datas() {
+    refresh_state() {
       setTimeout(() => {
         this.refresh()
-        console.log('c')
+        console.log('xxxxxxx')
       }, this.refreshDelay)
     }
   }

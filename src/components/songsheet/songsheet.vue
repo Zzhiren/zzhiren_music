@@ -6,7 +6,7 @@
                 <Icon type="ios-arrow-right" class="ios-arrow-right"></Icon>
             </div>
         </div>
-        <div v-if="datas.hasOwnProperty('songsheet')" class="list">
+        <div  class="list">
             <div v-for="(item, index) in datas.songsheet.slice(0, 3)" v-bind:key="item.dissid">
                 <img v-bind:src="item.imgurl" alt="">
                 <span class="dissname" v-html="item.dissname">{{ item.dissname }}</span>
@@ -21,7 +21,8 @@
     </div>
 </template>
 <script>
-import { getSongSheet } from 'api/music_hall_data'
+// import { getSongSheet } from 'api/music_hall_data'
+import { mapMutations } from 'vuex'
 
 export default {
     props: {
@@ -35,14 +36,20 @@ export default {
         }
     },
     mounted() {
-        // this._setSongSheet()
-        console.log('1111')
-        console.log(this.datas.hasOwnProperty('songsheet'))
+        this._scrollRefresh()
     },
     methods: {
-        _setSongSheet() {
-            // this.songsheet = this.datas.songsheet
-        }
+        _scrollRefresh() {
+            if(this.datas.songsheet.length > 0) {
+                this.scrollRefresh('songsheet')
+            }
+            // setTimeout(() => {
+            //     this.scrollRefresh('recommend')
+            // }, 5000);
+        },
+        ...mapMutations({
+            scrollRefresh: 'SCROLL_REFRESH'
+        })
     }
 }
 </script>

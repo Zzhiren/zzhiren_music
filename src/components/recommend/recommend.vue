@@ -2,9 +2,9 @@
     <div class="recommend">
         <div class="slider-wrapper">
             <slider>
-                <div class="slider-item " v-for="(item, index) in datas.focus" v-bind:key="item.fid">
-                    <a v-bind:href="item.jumpurl">
-                        <img v-bind:src="item.pic" alt="">
+                <div class="slider-item" v-for="(item, index) in datas.focus" v-bind:key="item.id">
+                    <a v-bind:href="item.linkUrl">
+                        <img v-bind:src="item.picUrl" alt="">
                     </a>
                 </div>
             </slider>
@@ -68,7 +68,7 @@
 </template>
 <script>
 import slider from 'base/slider/slider'
-import { getRecommend } from 'data/getdata'
+// import { getRecommend } from 'data/getdata'
 import {mapMutations} from 'vuex'
 
 export default {
@@ -88,21 +88,17 @@ export default {
         slider
     },
     mounted() {
-        console.log(this.focus)
+        this._scrollRefresh()
     },
     methods: {
-        _getRecommends() {
-            getRecommend().then(response => {
-                this.recommends = response.data.data.slider
-            })
-            // this.setMusic_hall_refresh(recommends)
-            // console.log(this.xxx)
-            this.set(this.xxx)
-        
+        _scrollRefresh() {
+            if(this.datas.focus.length > 0) {
+                this.scrollRefresh('recommend')
+            }
         },
         ...mapMutations({
-        set: 'SET'
-      })
+            scrollRefresh: 'SCROLL_REFRESH'
+        })
     }
 }
 

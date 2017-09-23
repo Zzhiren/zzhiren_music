@@ -1,8 +1,8 @@
 import * as types from './mutation-types'
 
 const mutations = {
-    [types.SET](state, xxx) {
-        state.xxx = xxx
+    [types.SCROLL_REFRESH](state, refresh_state) {
+        state.refresh_state = refresh_state
     }
 }
 

@@ -1,5 +1,5 @@
 const state = {
-    xxx: []
+    refresh_state: ''
 }
 
 export default state

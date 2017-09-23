@@ -7,14 +7,14 @@
             </div>
         </div>
         <div class="list">
-            <div v-for="(item, index) in mvlist.slice(0, 2)" v-bind:key="item.mv_id">
+            <div v-for="(item, index) in datas.mvlist.slice(0, 2)" v-bind:key="item.mv_id">
                 <img v-bind:src="item.picurl" alt="">
                 <p class="mvtitle">{{ item.mvtitle }}</p>
                 <span class="dissname">{{ _singerName(item.singers) }}</span>
             </div>
         </div>
         <div class="list">
-            <div v-for="(item, index) in mvlist.slice(2, 4)" v-bind:key="item.mv_id">
+            <div v-for="(item, index) in datas.mvlist.slice(2, 4)" v-bind:key="item.mv_id">
                 <img v-bind:src="item.picurl" alt="">
                 <p class="mvtitle">{{ item.mvtitle }}</p>
                 <span class="dissname">{{ _singerName(item.singers) }}</span>
@@ -22,14 +22,15 @@
         </div>
   </div>
 </template>
-<script>
-import { getMvList } from 'api/music_hall_data'
+<script scoped>
+// import { getMvList } from 'api/music_hall_data'
+import { mapMutations } from 'vuex'
 
 export default {
     props: {
-        mvlist: {
-            type: Array,
-            default: []
+        datas: {
+            type: Object,
+            default: {}
         }
     },
     data() {
@@ -41,13 +42,19 @@ export default {
             // name: ''
         }
     },
-  mounted() {
-    //   this._getMvList()
-  },
-  computed: {
+    computed: {
       
   },
+  mounted() {
+   this._scrollRefresh()
+  },
+  
   methods: {
+      _scrollRefresh() {
+            if(this.datas.mvlist.length > 0) {
+                this.scrollRefresh('mv-recommend')
+            }
+        },
       _getMvList() {
           getMvList().then((response) => {
               this.mvlist = response.data.mvlist
@@ -62,7 +69,10 @@ export default {
               array.push(singers[i].name)
           }
           return array.join('/')
-      }
+      },
+      ...mapMutations({
+          scrollRefresh: 'SCROLL_REFRESH'
+      })
   }
 }
 </script>

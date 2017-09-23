@@ -1,1 +1,1 @@
-export const xxx = state => state.xxx
+export const refresh_state = state => state.refresh_state

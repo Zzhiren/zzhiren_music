@@ -26,6 +26,7 @@
 </template>
 <script>
 // import { getTopList } from 'api/music_hall_data'
+import { mapMutations } from 'vuex'
 
 export default {
     props: {
@@ -40,15 +41,18 @@ export default {
         }
     },
     mounted() {
-        // this._getTopList()
-        // console.log(this.toplist)
+        this._scrollRefresh()
     },
     methods: {
-        // _getTopList() {
-        //     getTopList().then((response) => {
-        //         this.toplist = response.songlist
-        //     })
-        // }
+        _scrollRefresh() {
+            if(this.datas.songsheet.length > 0) {
+                this.scrollRefresh('toplist')
+            }
+
+        },
+        ...mapMutations({
+            scrollRefresh: 'SCROLL_REFRESH'
+        })
     }
 }
 </script>
