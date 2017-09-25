@@ -15,14 +15,14 @@
                         </slider>
                     </div>
                     <div class="category">
-                        <div class="category_items">
+                        <router-link to="singers" tag="div" class="category_items">
                             <div class="icon">
                                 <Icon type="person" class="i-icon"></Icon>
                             </div>
                             <div class="span">
                                 <span>歌手</span>
                             </div>
-                        </div>
+                        </router-link>
                         <div class="category_items">
                             <div class="icon">
                                 <Icon type="podium" class="i-icon"></Icon>

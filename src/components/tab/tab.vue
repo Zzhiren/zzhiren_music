@@ -22,7 +22,6 @@
 import ListView from 'base/listview/listview'
 import Search from 'components/search/search'
 
-
 export default {
   components: {
     ListView,

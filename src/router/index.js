@@ -4,7 +4,7 @@ import Hello from '@/components/Hello'
 
 Vue.use(Router)
 
-const musichallx = (resolve) => {
+const musichall = (resolve) => {
   import('components/music-hall/music-hall').then((module) => {
     resolve(module)
   })
@@ -20,7 +20,11 @@ const main = (resolve) => {
     resolve(module)
   })
 }
-
+const singers = (resolve) => {
+  import('components/singers/singers').then((module) => {
+    resolve(module)
+  })
+}
 
 export default new Router({
   routes: [
@@ -28,11 +32,6 @@ export default new Router({
       path: '/',
       redirect: '/tab'
     },
-    // {
-    //   path: '/musichall',
-    //   name: 'musichall',
-    //   component: musichall
-    // },
     {
       path: '/tab',
       name: 'tab',
@@ -41,21 +40,14 @@ export default new Router({
         {
           path: 'musichall',
           name: 'musichall',
-          component: musichallx
+          component: musichall
         }
       ]
+    },
+    {
+      path: '/singers',
+      name: 'singers',
+      component: singers
     }
-    // {
-    //   path: '/',
-    //   name: 'main',
-    //   component: main,
-    //   children: [
-    //     {
-    //       path: 'musichall',
-    //       name: 'musichall',
-    //       component: musichall
-    //     }
-    //   ]
-    // }
   ]
 })
