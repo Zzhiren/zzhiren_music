@@ -13,13 +13,22 @@ export default {
       type: Number,
       default: 1
     },
+    // 是否开启横向滚动，默认关闭
+    scrollX: {
+      type: Boolean,
+      default: false
+    },
+    scrollbar: {
+      type: Boolean,
+      default: false
+    },
     click: {
       type: Boolean,
       default: true
     },
     listenScroll: {
       type: Boolean,
-      default: false
+      default: true
     },
     pullup: {
       type: Boolean,
@@ -33,9 +42,9 @@ export default {
       type: Number,
       default: 20
     },
-    datas: {
-      type: Object,
-      default: {}
+    eventPassthrough: {
+      type: String,
+      default: ''
     }
   },
   data() {
@@ -51,11 +60,17 @@ export default {
       'refresh_state'
     ])
   },
+  created() {
+    
+  },
   mounted() {
     setTimeout(() => {
       this._initScroll()
     }, 20)
-console.log(this.refresh_state)
+    
+    setTimeout(() => {
+      this.refresh()
+    }, 2000)
   },
   updated() {
     this.refresh()
@@ -99,7 +114,8 @@ console.log(this.refresh_state)
     },
     refresh() {
       this.scroll && this.scroll.refresh()
-      
+      console.log('refresh')
+
     },
     scrollTo() {
       this.scroll && this.scroll.scrollTo.apply(this.scroll, arguments)
@@ -107,13 +123,12 @@ console.log(this.refresh_state)
     scrollToElement() {
       this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments)
     }
-    
+
   },
   watch: {
     refresh_state() {
       setTimeout(() => {
         this.refresh()
-        console.log('xxxxxxx')
       }, this.refreshDelay)
     }
   }

@@ -114,8 +114,7 @@ export default {
 <style lang="less" scoped>
 #musci-hall {
   position: fixed;
-  width: 100%; // height: 100%;
-  // overflow: hidden;
+  width: 100%;
   top: 84px;
   bottom: 44px;
 }
