@@ -18,18 +18,18 @@ export default {
       type: Boolean,
       default: false
     },
-    scrollbar: {
-      type: Boolean,
-      default: false
-    },
+    // scrollbar: {
+    //   type: Boolean,
+    //   default: false
+    // },
     click: {
       type: Boolean,
       default: true
     },
-    listenScroll: {
-      type: Boolean,
-      default: true
-    },
+    // listenScroll: {
+    //   type: Boolean,
+    //   default: true
+    // },
     pullup: {
       type: Boolean,
       default: false
@@ -41,10 +41,6 @@ export default {
     refreshDelay: {
       type: Number,
       default: 20
-    },
-    eventPassthrough: {
-      type: String,
-      default: ''
     }
   },
   data() {
@@ -82,6 +78,7 @@ export default {
       }
       this.scroll = new BScroll(this.$refs.wrapper, {
         probeType: this.probeType,
+        scrollX: this.scrollX,
         click: this.click
       })
 
@@ -114,7 +111,7 @@ export default {
     },
     refresh() {
       this.scroll && this.scroll.refresh()
-      console.log('refresh')
+      console.log('refresh1111')
 
     },
     scrollTo() {

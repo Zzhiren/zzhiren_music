@@ -16,24 +16,24 @@
                 </div>
             </scroll>
         </div>
-        <div class="types">
+        <!-- <div class="types">
 
         </div>
         <div class="types">
 
-        </div>
+        </div> -->
     </div>
 </template>
 <script>
 import BackTitle from 'base/back-title/back-title'
 import Scroll from 'base/scroll/scroll'
+import {mapMutations} from 'vuex'
 
 export default {
     data() {
         return {
             title: '歌手',
             scrollX: true,
-            scrollY: false,
             types: [
                 '全部',
                 '华语男',
@@ -58,10 +58,23 @@ export default {
         }
     },
     mounted() {
+        setTimeout(() => {
+            this._scrollRefresh()
+        }, 5000);
     },
     components: {
         BackTitle,
         Scroll
+    },
+    methods: {
+        _scrollRefresh() {
+            if(this.types.length > 0) {
+                this.scrollRefresh('xxx')
+            }
+        },
+        ...mapMutations({
+            scrollRefresh: 'SCROLL_REFRESH'
+        })
     }
 }
 </script>
@@ -80,17 +93,18 @@ export default {
         height: 30px;
         border-bottom: 1px solid #d6d6d6;
         .scroll {
-            width: 100%; 
+            width: 100%;
+            height: 50px;
             overflow: hidden;
             .list {
-                // display: flex;
-                width: 100%;
+                background: red;
+                display: flex;s
                 div {
-                    float: left;
-                    span {
-                    }
+                    flex: 1;
+                    flex-wrap: nowrap;    
                 }
             }
+                
         }
     }
     .title {
