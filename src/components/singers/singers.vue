@@ -8,53 +8,50 @@
         </back-title>
 
         <div class="types">
-            <scroll class="scroll" ref="scroll" :scrollX="scrollX">
-                <div class="list">
-                    <div v-for="(item, index) in types" v-bind:key="item.index">
-                        <span v-html="item"></span>
+            <scroll class="scroll" ref="scroll" :scrollY="scrollY" :scrollX="scrollX">
+                <div>
+                    <div v-for="(item, index) in types.locationTypes" v-bind:key="item.index">
+                        <span v-html="item" v-bind:class="{ firstspan: index == 0 }"></span>
                     </div>
                 </div>
             </scroll>
         </div>
-        <!-- <div class="types">
-
+        <div class="types">
+            <scroll class="scroll" ref="scroll" :scrollY="scrollY" :scrollX="scrollX">
+                <div>
+                    <div v-for="(item, index) in types.sexTypes" v-bind:key="item.index">
+                        <span v-html="item" v-bind:class="{ firstspan: index == 0 }"></span>
+                    </div>
+                </div>
+            </scroll>
         </div>
         <div class="types">
-
-        </div> -->
+            <scroll class="scroll" ref="scroll" :scrollY="scrollY" :scrollX="scrollX">
+                <div>
+                    <div v-for="(item, index) in types.musicTypes" v-bind:key="item.index">
+                        <span v-html="item" v-bind:class="{ firstspan: index == 0 }"></span>
+                    </div>
+                </div>
+            </scroll>
+        </div>
     </div>
 </template>
 <script>
 import BackTitle from 'base/back-title/back-title'
 import Scroll from 'base/scroll/scroll'
-import {mapMutations} from 'vuex'
+import { mapMutations } from 'vuex'
 
 export default {
     data() {
         return {
             title: '歌手',
             scrollX: true,
-            types: [
-                '全部',
-                '华语男',
-                '华语女',
-                '华语组合',
-                '韩国男',
-                '韩国女',
-                '韩国组合',
-                '日本男',
-                '日本女',
-                '日本组合',
-                '欧美男',
-                '欧美女',
-                '欧美组合',
-                '乐团',
-                '演奏家',
-                '作曲家',
-                '指挥家',
-                '其他'
-            ]
-            
+            scrollY: false,
+            types: {
+                "locationTypes": ['全部', '华语男', '华语女', '华语组合', '韩国男', '韩国女', '韩国组合', '日本男', '日本女', '日本组合', '欧美男', '欧美女', '欧美组合', '乐团', '演奏家', '作曲家', '指挥家', '其他'],
+                "sexTypes": ['全部', '男', '女', '组合'],
+                "musicTypes": ['全部', '流行', '嘻哈', '摇滚', '电子', '民谣', '轻音乐', '爵士', '古典', '乡村', '蓝调']
+            }
         }
     },
     mounted() {
@@ -68,7 +65,7 @@ export default {
     },
     methods: {
         _scrollRefresh() {
-            if(this.types.length > 0) {
+            if (this.types.length > 0) {
                 this.scrollRefresh('xxx')
             }
         },
@@ -81,6 +78,8 @@ export default {
 <style lang="less" scoped>
 @import '~common/less/skin';
 
+@height: 50px;
+
 .singers {
     max-width: @max-width;
     min-width: @min-width;
@@ -90,28 +89,37 @@ export default {
         background: #f4f4f4;
         width: 100%;
         position: relative;
-        height: 30px;
+        height: @height;
         border-bottom: 1px solid #d6d6d6;
         .scroll {
             width: 100%;
-            height: 50px;
+            height: @height;
             overflow: hidden;
-            .list {
-                background: red;
-                display: flex;s
+            div {
+                display: inline-block !important;
+                height: 50px;
+                white-space: nowrap;
                 div {
-                    flex: 1;
-                    flex-wrap: nowrap;    
+                    display: inline-block;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    span {
+                        line-height: @height;
+                        font-size: 16px;
+                    }
+                    .firstspan {
+                        color: @skin-green;
+                    }
                 }
             }
-                
         }
     }
     .title {
-        margin-top: 10px;
+        margin-top: 6px;
         border-radius: 10px;
         .button {
-            width: 60px;
+            width: 80px;
+            height: 30px;
         }
     }
 }

@@ -18,6 +18,10 @@ export default {
       type: Boolean,
       default: false
     },
+    scrollY: {
+      type: Boolean,
+      default: false
+    },
     // scrollbar: {
     //   type: Boolean,
     //   default: false
@@ -79,6 +83,7 @@ export default {
       this.scroll = new BScroll(this.$refs.wrapper, {
         probeType: this.probeType,
         scrollX: this.scrollX,
+        // scrollY: this.scrollY,
         click: this.click
       })
 
@@ -111,7 +116,7 @@ export default {
     },
     refresh() {
       this.scroll && this.scroll.refresh()
-      console.log('refresh1111')
+      console.log('refresh11111')
 
     },
     scrollTo() {
