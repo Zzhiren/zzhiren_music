@@ -1,6 +1,8 @@
 <template>
     <div class="back_title">
-        <Icon type="ios-arrow-left" class="arrow-left"></Icon>
+        <div class="back-icon" v-on:click="back()">
+            <Icon type="ios-arrow-left" class="arrow-left" ></Icon>
+        </div>
         <slot class="singers" name="singers"></slot>
         <slot></slot>
     </div>
@@ -11,6 +13,12 @@ export default {
         title: {
             type: String,
             default: ''
+        }
+    },
+    methods: {
+        back() {
+            this.$router.go(-1)
+            console.log('router')
         }
     }
   
@@ -28,11 +36,18 @@ export default {
     background: @skin-green;
     position: relative;
     text-align: center;
+    .back-icon {
+        width: @height;
+        height: @height;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+    }
     .arrow-left {
         color: white;
         font-size: 24px;
         line-height: @height;
-        left: 20px;
+        // left: 20px;
         font-weight: 100;
         position: absolute;
     }

@@ -10,7 +10,7 @@
         <div class="types">
             <scroll class="scroll" ref="scroll" :scrollY="scrollY" :scrollX="scrollX">
                 <div>
-                    <div v-for="(item, index) in types.locationTypes" v-bind:key="item.index">
+                    <div class="button" v-for="(item, index) in types.locationTypes" v-bind:key="item.index">
                         <span v-html="item" v-bind:class="{ firstspan: index == 0 }"></span>
                     </div>
                 </div>
@@ -19,7 +19,7 @@
         <div class="types">
             <scroll class="scroll" ref="scroll" :scrollY="scrollY" :scrollX="scrollX">
                 <div>
-                    <div v-for="(item, index) in types.sexTypes" v-bind:key="item.index">
+                    <div class="button" v-for="(item, index) in types.sexTypes" v-bind:key="item.index">
                         <span v-html="item" v-bind:class="{ firstspan: index == 0 }"></span>
                     </div>
                 </div>
@@ -28,12 +28,13 @@
         <div class="types">
             <scroll class="scroll" ref="scroll" :scrollY="scrollY" :scrollX="scrollX">
                 <div>
-                    <div v-for="(item, index) in types.musicTypes" v-bind:key="item.index">
+                    <div class="button" v-for="(item, index) in types.musicTypes" v-bind:key="item.index">
                         <span v-html="item" v-bind:class="{ firstspan: index == 0 }"></span>
                     </div>
                 </div>
             </scroll>
         </div>
+        
     </div>
 </template>
 <script>
@@ -99,10 +100,13 @@ export default {
                 display: inline-block !important;
                 height: 50px;
                 white-space: nowrap;
-                div {
+                .button {
                     display: inline-block;
                     padding-left: 10px;
                     padding-right: 10px;
+                    // &:active {
+                    //     background: red;
+                    // }
                     span {
                         line-height: @height;
                         font-size: 16px;
